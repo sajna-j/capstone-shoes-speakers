@@ -1,13 +1,13 @@
 from pygame import mixer 
 
 # Starting the mixer 
-mixer.init() 
+mixer.init(channels=2) 
 
 # Loading the song 
 mixer.music.load("redbone.mp3") 
 
 # Setting the volume 
-mixer.music.set_volume(0.7) 
+mixer.music.set_volume(0.7, 0) 
 
 # Start playing the song 
 mixer.music.play() 
