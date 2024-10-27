@@ -1,6 +1,4 @@
 from pygame import mixer 
-# from gtts import gTTS
-import os
 
 # Starting the mixer 
 mixer.init() 
