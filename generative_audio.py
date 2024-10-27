@@ -1,8 +1,22 @@
 from gtts import gTTS
-import os
+from io import BytesIO
+import pygame
 
+def speak(text, language='en'):
+    # this creates speach as a bitstream so we don't need to save an mp3 file anywhere
+    mp3_fp = BytesIO()
+    tts = gTTS(text=text, lang=language)
+    tts.write_to_fp(mp3_fp)
+    mp3_fp.seek(0)
+    
+    # play audio!
+    pygame.mixer.init()
+    pygame.mixer.music.load(mp3_fp)
+    pygame.mixer.music.play()
+    
+    # wait for audio to finish playing
+    while pygame.mixer.music.get_busy():
+        pygame.time.Clock().tick(10)
 
-text = "Hello Jasmine"
-tts = gTTS(text=text, lang='en')
-tts.save("hello.mp3")
-os.system("mpg321 hello.mp3")  # You'll need to install mpg321 or use another audio player
+pygame.init()
+speak("Hello world!")
