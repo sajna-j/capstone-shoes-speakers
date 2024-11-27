@@ -45,7 +45,7 @@ def set_volume(left_volume, right_volume):
     """Set the volume for left and right speakers."""
     command = [
         "amixer",
-        "-c", "1",
+        "-c", "2",
         "sset",
         "Speaker",
         f"{left_volume}%,{right_volume}%"
